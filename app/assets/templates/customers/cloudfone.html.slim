@@ -1,0 +1,32 @@
+.wrap
+  .sub-navbar
+    span.options.activenav
+      | Campaign Analysis from Sept 19-26 (Baseline from Sep 12-18)
+    .pull-right.baseline
+      .row
+        .col-md-6
+          select.form-control.add-margin-right ng-init="analytic=analytics[0]" ng-change="cherry(page)" ng-model="page" ng-options="page.name for page in pages"
+        .col-md-6
+          button.outline-button.orange-border ng-click="baseline()" Baseline
+  div ng-show="loading"
+    .load-overlay
+    .load
+      =image_tag "loading.gif"
+  .app-content ng-hide="loading"
+    .padding-graph 
+      div.row-space-top-6 nvd3="" options="options_cloudfone" data="data_cloudfone" yAxisTickFormat="yAxisTickFormatFunction()"
+      .tile.comments.border ng-click="analyze(post)" ng-repeat="post in posts.posts track by $index" ng-if='post.picture'
+        .col-md-2
+          | {{post.time_formatted}}
+        .col-md-2.no-padding
+          img.post-img ng-src= "{{post.picture}}"
+        .col-md-6.description.height-60
+          a#posts href="{{post.url}}" target="_blank"
+            | {{post.post}}
+        .col-md-2.engagement
+          .num
+            | {{post.total}}
+          span.engage Engagements
+      / .tile.comments.border ng-click="analyze($index)" ng-if='!post.picture'
+      /   h4 Baseline (Sept 7-14)
+        

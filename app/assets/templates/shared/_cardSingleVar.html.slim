@@ -1,0 +1,27 @@
+.border.graph.border-orange
+  .row-space-top-2
+    .float-left
+      h3.close ng-click="deleteCard($index)" X
+    .align-center
+      h5.capitalize
+        | Single Variable Analysis: {{card.data.variable1}}
+  .row.add-padding-top ng-repeat="interest in card.data.data" ng-class="{gray: $odd}"
+    .col-md-4.col-md-offset-1
+      img ng-src="{{interest.picture}}"
+      p.align-center.row-space-top-1
+        | {{interest.interest_name}}
+      p.align-center.row-space-top-1
+        | {{interest.thevalue | number:2}}%
+      / .line-icon.gender-icon ng-class="{red: gender.gender=='female', orange: gender.gender=='male'}" ng-bind-html="gender.icon|html"
+      / i.line-icon.gender ng-class="{green: $index==0, red:$index==1, yellow:$index==2}"
+      /   | &#xe31f;
+    .col-md-7
+      .row
+        .col-md-6.no-padding-right.height ng-repeat="gender in interest.data"
+          div ng-if="gender.status"
+            img.status-img ng-src="{{gender.image}}"
+          .line-icon.single-gender-icon ng-class="{red: gender.variable1=='Female', orange: gender.variable1=='Male', green: '$index==0', red:$index==1, yellow:$index==2, blue: $index==3}" ng-bind-html="gender.icon|html"
+          span.var-size
+            | {{gender.variable1}}
+          p.var-size
+            | {{gender.value}}%

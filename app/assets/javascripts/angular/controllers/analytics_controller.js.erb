@@ -1,0 +1,200 @@
+angular.module('Honeypot.controllers')
+  .controller('AnalyticsController', ["$scope", "$state", "DemoService", "$rootScope", "DataService", "$sce", "$uibModal", "GraphService",
+  function($scope, $state, DemoService, $rootScope, DataService, $sce, $uibModal, GraphService) {
+    $scope.$parent.title = 'Analytics';
+
+    $scope.myOnClickFunction = function(element){
+        console.log("click",element);
+    }
+
+    $scope.myOnHoverFunction = function(element){
+        console.log("hover",element);
+    }
+
+
+    $scope.deleteCard = function(index) {
+      $scope.cards.splice(index,1);
+    }
+
+    $scope.date_analytics = {
+        startDate: moment(),
+        endDate: moment().add(7, "days")
+    };
+
+
+    //data go fxn
+    $scope.go = function(type) {
+      $scope.loading.likesArea = true
+      $scope.show_graph.likesArea = false
+
+      params.start_date=$scope.date_analytics.startDate.unix()
+      params.end_date=$scope.date_analytics.endDate.unix()
+
+      DataService.likesArea(params)
+      .then(function(d){
+        data = [{
+            "key" : "Page Likes" ,
+            "values" : d.reverse()
+        }]
+        type = 'stackedAreaChart'
+        $scope.options = GraphService.likesArea(type)
+        $scope.data = data
+        $scope.rc.api.refresh()
+
+        $scope.loading.likesArea = false
+        $scope.show_graph.likesArea = true
+      });
+
+    }
+
+
+
+
+    $scope.openModal = function () {
+      var modalInstance = $uibModal.open({
+          animation: true,
+          templateUrl: 'modal.html',
+          controller: 'ModalController',
+          resolve: {
+            selected: function() {
+              return $scope.selected
+            }
+          }
+      });
+      modalInstance.result.then(function (selectedItem) {
+
+        $scope.selected = selectedItem;
+        if(selectedItem) {
+          $scope.loading.cards = true
+          $scope.show_graph.cards = false
+          if($scope.selected.graph=='single') {
+
+           params.variable1 = $scope.selected.variable1
+           params.interest_name = $scope.selected.interest_name
+
+           DataService.single_variable(params)
+           .then(function(d){
+             $scope.single_var = d
+
+             card = {
+               "show": true,
+               "graph":'single_var',
+               "data": d,
+               "templateUrl": 'shared/_cardSingleVar.html'
+             }
+             _.each(card.data.data,  function(a) {
+               _.each(a.data, function(b) {
+                 b.status = false;
+                 if (b.variable1 == 'Male') {
+                   b.icon ='&#xe165;'
+                 }
+                 else if (b.variable1 == 'Female') {
+                   b.icon ='&#xe168;'
+                 }
+                 else if (b.variable1 == 'Single') {
+                   b.status = true;
+                   b.image ='https://dl.dropboxusercontent.com/u/24038622/icons/user.png'
+                 }
+                 else if (b.variable1 == 'Married') {
+                   b.status = true;
+                   b.image ='https://dl.dropboxusercontent.com/u/24038622/icons/married.png'
+                 }
+                 else if (b.variable1 == 'In a relationship') {
+                   b.status = true;
+                   b.image ='https://dl.dropboxusercontent.com/u/24038622/icons/relationship.png'
+                 }
+                 else if (b.variable1 == 'In an open relationship') {
+                   b.status = true;
+                   b.image ='https://dl.dropboxusercontent.com/u/24038622/icons/engaged.png'
+                 }
+                 else if (b.variable1 == 'Engaged') {
+                   b.status = true;
+                   b.image ='https://dl.dropboxusercontent.com/u/24038622/icons/engaged.png'
+                 }
+                 else {
+                   b.icon ='&#xe393;'
+                   $scope.location == true;
+                 }
+               })
+             });
+
+             $scope.cards.push(card)
+
+             $scope.loading.cards = false
+             $scope.show_graph.cards = true
+
+           });
+          }
+          else {
+           params.variable1 = $scope.selected.variable1
+           params.variable2 = $scope.selected.variable2
+           params.interest_name = $scope.selected.interest_name
+
+           DataService.double_variable(params)
+           .then(function(d){
+             $scope.double_var = d
+             $scope.double_var.show = true
+
+             card = {
+               "show": true,
+               "graph":'double_var',
+               "data": d,
+               "templateUrl": 'shared/_cardDoubleVar.html'
+             }
+
+             _.each(card.data.data, function(a) {
+               _.each(a.data, function(b) {
+                 _.each(b.data, function (c) {
+                   c.status = false;
+                   if (c.variable2 == 'Male') {
+                     c.icon ='&#xe165;'
+                   }
+                   else if (c.variable2 == 'Female') {
+                     c.icon ='&#xe168;'
+                   }
+                   else if (c.variable2 == 'Single') {
+                     c.status = true
+                     c.image ='https://dl.dropboxusercontent.com/u/24038622/icons/user.png'
+                   }
+                   else if (c.variable2 == 'Married') {
+                     c.status = true
+
+                     c.image ='https://dl.dropboxusercontent.com/u/24038622/icons/married.png'
+                   }
+                   else if (c.variable2 == 'In a relationship') {
+                     c.status = true
+                     c.image ='https://dl.dropboxusercontent.com/u/24038622/icons/relationship.png'
+                   }
+                   else if (c.variable2 == 'In an open relationship') {
+                     c.status = true
+                     c.image ='https://dl.dropboxusercontent.com/u/24038622/icons/engaged.png'
+                   }
+                   else if (c.variable2 == 'Engaged') {
+                     c.status = true
+                     c.image ='https://dl.dropboxusercontent.com/u/24038622/icons/engaged.png'
+                   }
+                   else if (c.variable2 == 'Widowed') {
+                     c.status = true
+                     c.image ='https://dl.dropboxusercontent.com/u/24038622/icons/engaged.png'
+                   }
+                   else {
+                     c.icon='&#xe393;'
+                   }
+                 })
+               })
+
+             })
+             $scope.cards.push(card)
+             $scope.loading.cards = false
+             $scope.show_graph.cards = true
+           });
+         }
+       }
+     })
+   };
+
+
+   $scope.variable = function() {
+     variable_analytics($scope.analytic.name)
+   }
+}]);

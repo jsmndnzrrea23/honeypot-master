@@ -1,0 +1,25 @@
+.border.graph.border-orange
+  .row-space-top-2
+    .float-left
+      h3.close ng-click="deleteCard($index)" X
+    .align-center
+      h5.capitalize
+        | Double Variable Analysis: {{card.data.variable1}} and {{card.data.variable2}}
+  .row.center.row-space-4.graph-border ng-repeat="interest in card.data.data"
+    .col-md-4.margin-top-center
+      img ng-src="{{interest.picture}}"
+      p.align-center
+        | {{interest.thevalue | number:2}}%
+    .col-md-8
+      .row ng-repeat="var1 in interest.data"
+        p.gender-label
+          | {{var1.variable1}}
+        .row.center.no-margin
+          .col-md-6.side-wrap ng-repeat="var2 in var1.data"
+            div ng-if="var2.status"
+              img.status-img ng-src="{{var2.image}}"
+            .line-icon.single-gender-icon ng-class="{red: var2.variable2=='Female', orange: var2.variable2=='Male', green: '$index==0', red:$index==1, yellow:$index==2, blue: $index==3}" ng-bind-html="var2.icon|html"
+            span.var-size
+              | {{var2.variable2}}
+            p.var-size
+              | {{var2.total}}%

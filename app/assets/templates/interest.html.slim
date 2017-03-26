@@ -1,0 +1,17 @@
+.modal-container.row-space-top-4
+  i.line-icon.orange.analytics-icon
+    | &#xe34a;
+  .align-center.row-spacing.row-space-4
+    button.btn-animate.outline-button.orange-border ng-click="lastdays(7)" Last 7 Days
+    button.btn-animate.outline-button.orange-border ng-click="lastdays(28)" Last 28 Days
+  h4.line
+    span on
+  p.red ng-show="error==true" You can only compare a maximum of three pages at a time.
+  span.label-var.pages Pages
+  select multiple="" ng-model="myData" ng-options="value as label for (value, label) in data" chosen=""
+
+
+  hr.row-space-1
+
+  button.btn-animate.btn-padding.red-btn.add-margin-right ng-click="closeModal()" Cancel
+  button.btn-animate.btn-padding.green-btn ng-click="addInterest()" Add Graph

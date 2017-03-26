@@ -1,0 +1,9 @@
+div ng-if="address.respondents!=0" ng-show="address.values.length"
+  h4.center.customer_analytics_title 
+    | Address Breakdown (Respondents: {{address.respondents}})
+  .row.center.no-margin
+    .col-md-6.side-wrap ng-repeat="address in address.values" ng-class="{bg_gray: $index==1 || $index==2}"
+      .line-icon.location-icon ng-class="{green: $index==0, red:$index==1, yellow:$index==2, blue: $index==3}"
+        | &#xe393;
+      p.rel-status
+        | {{address.address}}, {{address.value | number:1}} %

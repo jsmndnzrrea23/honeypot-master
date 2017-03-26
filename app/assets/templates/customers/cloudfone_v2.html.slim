@@ -1,0 +1,68 @@
+.wrap
+  .sub-navbar
+    span.options ng-repeat="navbar in navbarOptions" ng-class="{activenav: tab==navbar.link}" ui-sref="{{navbar.link}}"
+      | {{navbar.label}}
+    .pull-right.baseline
+      .row
+        .col-md-6
+          select.form-control ng-change="competitor_period(period)" ng-model="period" ng-options="period.month_formatted for period in periods"
+        .col-md-6
+          select.form-control ng-init="page=pages[0]" ng-change="competitor_analysis(page)" ng-model="page" ng-options="page.name for page in pages"
+  .app-content
+    div ng-show="loading"
+      .load-overlay
+      .load
+        =image_tag "loading.gif"
+    .padding-graph
+      .row
+        .col-md-6
+          div.row-space-top-6 nvd3="" options="options_chicken" data="data_chicken_jollibee" api="ac.api"
+        .col-md-6
+          div.row-space-top-6 nvd3="" options="options_chicken" data="data_chicken_mcdo" api="cc.api"
+      .row.row-space-7.row-space-top-4
+        .col-md-6
+          h4.header-font.row-space-4.inline
+            | Cloudfone Campaigns ({{posts.posts.length -1}})
+          .pull-right
+            p 
+              | Total Engagements: {{calcTotal(filtered)}}
+          .row.row-space-top-4
+            .col-md-6
+              input.form-control type="text" placeholder="filter" ng-model="search_anchor.post"
+            .col-md-6
+              select.form-control ng-init="filter=filters[0]" ng-change="sortBySentiment(filter.value)" ng-model="filter" ng-options="f.name for f in filters"
+          .border.row-space-top-5
+            .row.post ng-click="analyze(post)" ng-if='post.picture' ng-repeat="post in posts.posts | filter:search_anchor:strict as filtered"
+              .col-md-2
+                | {{post.time_formatted}}
+              .col-md-2.no-padding
+                img.post-img ng-src= "{{post.picture}}"
+              .col-md-6.description.height-60
+                a#posts href="{{post.url}}" target="_blank"
+                  | {{post.post}}
+              .col-md-2.engagement
+                .num
+                  | {{post.total}}
+                span.engage Engagements
+        .col-md-6
+          h4.header-font.row-space-4.inline
+            | {{page.title}} ({{posts_mcdo.posts.length -1}})
+          .pull-right
+            p 
+              | Total Engagements: {{calcTotal(filtered_mcdo)}}
+          .row.row-space-top-4
+            .col-md-6
+              input.form-control type="text" placeholder="filter" ng-model="search_competitor.post"
+          .border.row-space-top-4
+            .row.post ng-click="analyze(post)" ng-if='post.picture' ng-repeat="post in posts_mcdo.posts | filter:search_competitor:strict as filtered_mcdo"
+              .col-md-2
+                | {{post.time_formatted}}
+              .col-md-2.no-padding
+                img.post-img ng-src= "{{post.picture}}"
+              .col-md-6.description.height-60
+                a#posts href="{{post.url}}" target="_blank"
+                  | {{post.post}}
+              .col-md-2.engagement
+                .num
+                  | {{post.total}}
+                span.engage Engagements

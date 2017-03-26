@@ -1,0 +1,95 @@
+
+// Base
+$border-radius-base: 0;
+$body-bg: #f5f5f5;
+$text-color: #565a5c;
+
+// Panels
+$panel-bg: #fff;
+$fb-blue: #3b5998;
+
+
+// Color palette
+
+$sidebar-blue: #37475f;
+$darkblue: #40434f;
+$white: #fff;
+$black: #000;
+
+$orange: #db7933;
+$light-orange: #F87D34;
+$gray: #F7F7F7;
+$green: #2ECC71;
+$purple: #9B59B6;
+$red: #E74C3C;
+$blue: #3498DB;
+$yellow: #FBDA7B;
+
+
+
+// Fonts
+$header-font: "Montserrat", sans-serif;
+$base-font: "Open Sans", sans-serif;
+$logo-font: "Raleway", sans-serif;
+$line-font: "streamline-30px";
+
+//mixins
+
+// mixins should appear here
+@mixin spacing-reset {
+  margin: 0;
+  padding: 0;
+}
+
+%clearfix {
+  *zoom: 1;
+  &:before, &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+$break-monitor: 1200px;
+$break-laptop: 992px;
+$break-tablet: 768px;
+$break-mobile: 480px;
+$break-nano: 320px;
+
+@mixin breakpoint($width) {
+  @if $width == monitor {
+    @media (min-width: $break-monitor) { @content; }
+  }
+  @else if $width == laptop {
+    @media (min-width: $break-laptop) { @content; }
+  }
+  @else if $width == tablet {
+    @media (min-width: $break-tablet) { @content; }
+  }
+  @else if $width == mobile {
+    @media (min-width: $break-mobile) { @content; }
+  }
+  @else if $width == nano {
+    @media (min-width: $break-nano)  { @content; }
+  }
+}
+
+@mixin font-size($sizeValue: 1.6) {
+  font-size: ($sizeValue * 10) + px;
+  font-size: $sizeValue + rem;
+}
+
+
+
+@mixin multiLineEllipsis($lineHeight, $lineCount){
+    overflow: hidden;
+    position: relative;
+    line-height: $lineHeight;
+    max-height: $lineHeight * $lineCount;
+    text-align: justify;
+    padding-right: 15px;
+}
+
+$font-family-price: 'Georgia', serif;

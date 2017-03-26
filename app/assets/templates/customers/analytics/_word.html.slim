@@ -1,0 +1,4 @@
+div ng-if='current_post.id'
+  h4.center.customer_analytics_title
+    | Comments Word Cloud
+  jqcloud#cloud-dynamic words="words" auto-resize="true" colors="{{colors}}" delay="10" steps="7" font-size="{from:0.09, to:0.04}"

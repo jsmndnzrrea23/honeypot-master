@@ -1,0 +1,105 @@
+angular.module('Honeypot.controllers')
+  .controller('ComparativeController', ["$scope", "$state", "$rootScope", "DataService", "$sce", "$uibModal", function($scope, $state, DemoService, $rootScope, DataService, $sce, $uibModal, $uibModalInstance) {
+
+    //daterangepicker
+    $scope.date = {
+        startDate: moment(),
+        endDate: moment().add(7, "days")
+    };
+
+    //Params
+
+    data = {
+      "token": "EAACEdEose0cBAMkpSMtJdQoIRj45XVDPAUdspBJUwF5dSUkIg118T2jDY0GqZBrIt83OZAjNoqCgq3KBZBufHojGxFZBj7ZA7fahkNN5tz9qmDSGfJWSHQXEZAkgdx1WspuOXPCSJZCy7nec7hOgnyHelRlRWnEqaCKGFFyvGwRv4GNjaa1tc3zzdoSju0Hbq0ZD",
+      "start_date": 1469574000,
+      "end_date": 1469919600,
+      "page_name": "motoliteexpresshatid",
+      "user_id": 1,
+    }
+
+
+    //graphs
+
+    draw_graph = function(data) {
+
+      $scope.options = {
+        chart: {
+            type: graph,
+            height: 450,
+            margin : {
+                top: 20,
+                right: 20,
+                bottom: 30,
+                left: 40
+            },
+            color:["#e07525", "#HHH"],
+            x: function(d){return d[0];},
+            y: function(d){return d[1];},
+            useVoronoi: false,
+            clipEdge: true,
+            duration: 100,
+            useInteractiveGuideline: true,
+            xAxis: {
+                showMaxMin: false,
+                tickFormat: function(d) {
+                    return d3.time.format('%b %d %y')(new Date(d))
+                }
+            },
+            yAxis: {
+                tickFormat: function(d){
+                    return d3.format(',.2f')(d);
+                }
+            },
+            zoom: {
+                enabled: true,
+                scaleExtent: [1, 10],
+                useFixedDomain: false,
+                useNiceScale: false,
+                horizontalOff: false,
+                verticalOff: true,
+                unzoomEventType: 'dblclick.zoom'
+            }
+        }
+      };
+      $scope.data = [
+          {
+              "key" : "Page Likes" ,
+              "values" : data
+          }
+        ]
+    }
+
+    $scope.go = function() {
+      data.start_date=$scope.date.startDate.unix()*1000
+      data.end_date=$scope.date.endDate.unix()*1000
+      data.interest_names = ["kia", "toyota", "honda", "suzuki"]
+
+      DataService.comparative_interests(data)
+      .then(function(d){
+        // console.log(new_data)
+        // $scope.data = new_data
+        console.log(d)
+        // draw_graph(d)
+        //
+        // $scope.rc.api.refresh()
+
+      });
+    }
+
+    graph = "lineChart"
+
+    initial_data =[ [ 1025409600000 , 1] , [ 1028088000000 , 1] , [ 1030766400000 , 2]]
+
+    draw_graph(initial_data)
+
+    $scope.openModal = function () {
+      $uibModal.open({
+          animation: true,
+          templateUrl: '<%= asset_path("modal.html") %>',
+          controller: 'ModalController'
+      });
+    }
+
+    $scope.today = new Date();
+
+  }]);

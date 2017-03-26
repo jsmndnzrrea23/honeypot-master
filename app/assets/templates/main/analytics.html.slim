@@ -1,0 +1,77 @@
+.app-content
+  .app-body
+    .row
+      .col-md-8
+        h4.header-font Overall Progress
+      .col-md-3.remove-padding
+        i.line-icon.input-icon
+          | &#xe31f;
+        input.input-for-icon date-range-picker="" class="form-control date-picker" type="text" ng-model="date_analytics"
+      .col-md-1
+        button.outline-button.orange-border ng-click="go('basic')" GO
+    div ng-show="loading.likesArea"
+      .load-overlay
+      .load
+        =image_tag "loading.gif"
+    div.row-spacing ng-if="show_graph.likesArea" nvd3="" options="options" data="data" api="rc.api"
+.app-content.bg_gray
+  .app-body
+    .row
+      .col-md-6
+        h4.header-font.row-space-4 Top Performing Posts
+        .border
+          div ng-show="loading.topPerformingPosts"
+            .load-overlay
+            .load
+              =image_tag "loading.gif"
+          .row.post ng-repeat="post in posts track by $index"
+            .col-md-2.no-padding
+              img.post-img ng-src= "{{post.image_url}}"
+            .col-md-8.description
+              p
+                | {{post.post}}
+            .col-md-2.engagement
+              .num
+                | {{post.engagements}}
+              span.engage Engagements
+      .col-md-6
+        h4.header-font.inline-block.row-space-4 Variable Analytics
+        .pull-right
+          select.form-control ng-init="analytic=analytics[0]" ng-change="variable()" ng-model="analytic" ng-options="analytic.name for analytic in analytics"
+        div ng-show="loading.variable_analytics"
+          .load-overlay
+          .load
+            =image_tag "loading.gif"
+        
+        div ng-if="show_graph.variable_analytics" ng-show="analytic.name=='gender'"
+          .border
+            .row.center.padding_15 ng-repeat="gender in var.values" ng-class="{bg_gray: $index==1}"
+              .col-md-6
+                .line-icon.gender-icon ng-class="{red: gender.gender=='Female', orange: gender.gender=='Male'}" ng-bind-html="gender.icon|html"
+              .col-md-6
+                p.percent
+                  | {{gender.value}}%
+        div ng-if="show_graph.variable_analytics" ng-show="analytic.name=='address'"
+          .border
+            .row.center
+              .col-md-6.side-wrap ng-repeat="address in var.values" ng-class="{bg_gray: $index==1 || $index==2}"
+                .line-icon.location-icon ng-class="{green: $index==0, red:$index==1, yellow:$index==2, blue: $index==3}"
+                  | &#xe393;
+                p.rel-status
+                  | {{address.address}}, {{address.value}} %
+        div ng-if="show_graph.variable_analytics" ng-show="analytic.name=='status'"
+          .border
+            .row.center
+              .col-md-6.side-wrap ng-repeat="status in var.values" ng-class="{bg_gray: $index==1 || $index==2}"
+                img.card-size ng-src= "{{status.icon}}"
+                p.rel-status
+                  | {{status.status}}, {{status.value}}%
+                
+              
+
+        h4.header-font.row-space-top-4 Most Used Words
+        .border.row-space-top-3
+          jqcloud#cloud-dynamic words="words" auto-resize="true" colors="{{colors}}" delay="10" steps="7" font-size="{from:0.09, to:0.04}"
+
+
+      

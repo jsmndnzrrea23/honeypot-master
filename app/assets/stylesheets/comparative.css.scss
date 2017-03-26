@@ -1,0 +1,109 @@
+.graph {
+  text-align: center;
+  font-family: 'Lato';
+  p {
+    font-weight: 300;
+    font-size: 12px;
+    // margin-bottom: 5px;
+  }
+  .status {
+    font-size: 10px;
+    margin-top: 10px;
+  }
+  .close {
+    font-size: 18px;
+    margin: 0;
+  }
+  .gender {
+    font-size: 40px;
+  }
+}
+.add-padding-top {
+  padding-top: 15px;
+}
+.status-icon {
+  width: 40px;
+}
+.margin-bottom-21 {
+  margin-bottom: 21px;
+}
+.margin-top-2 {
+  margin-top: -2px;
+}
+.gender-size {
+  font-size: 70px;
+}
+.margin-top-center {
+  margin-top: 50%;
+}
+.picture {
+  bottom: 25px;
+  position: relative;
+}
+.add-padding-top-40 {
+  padding-top: 40px
+}
+.graph .gender-label {
+  font-size: 14px;
+  font-weight: 700;
+}
+.graph-border {
+  border-bottom: 1px solid #C7C7C7;
+}
+.modal-container {
+  .date-picker {
+    width: 50%;
+    margin: auto;
+    margin-bottom: 25px;
+    display: block;
+  }
+}
+.graph-border:last-child {
+  border-bottom: none;
+}
+
+.row-space-4:last-child {
+  margin-bottom: 0;
+}
+.width {
+  width: 1000px;
+}
+
+.masonry-brick {
+  margin: 1em;
+  display: none;
+}
+
+.masonry-brick.loaded {
+   display: block;
+}
+.card {
+  width: 410px;
+  box-shadow: 2px 2px 6px 0 rgba(0, 0, 0, 0.25);
+}
+
+.card-margin {
+  margin: 20px 0 0 0px;
+}
+.capitalize {
+  text-transform: capitalize;
+}
+.no-border {
+  border: none;
+}
+
+.single-gender-icon {
+  font-size: 40px;
+}
+.border-orange {
+  border-color: #DB7933;
+}
+.var-size {
+  font-size: 12px;
+}
+.status-img {
+  width: 50px
+}
+.height {
+  height: 100px;
+}

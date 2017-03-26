@@ -1,0 +1,404 @@
+.remove-padding {
+    padding: 0;
+}
+.inline {
+  display: inline;
+}
+
+.row-spacing {
+  padding: 25px 0 0 0;
+}
+
+.line-icon {
+  font-family: $line-font;
+  font-style: normal;
+}
+
+.font-size_18 {
+  font-size: 18px;
+}
+
+.input-icon {
+  position: absolute;
+  padding: 8px;
+}
+
+.input-for-icon {
+  font-size: 13px;
+  height: 35px;
+  padding-left: 30px;
+}
+
+.align-center {
+  text-align:center;
+}
+
+.align-right {
+  text-align:right;
+}
+
+.float-left {
+  float: left;
+}
+
+.outline-button {
+  border-radius: 3px;
+  background: $white;
+  border: solid 1px;
+  font-size: 14px;
+  font-weight: 300;
+  padding: 6px 19px 6px 19px;
+  @include box-shadow(2px 2px 6px 0 rgba(0,0,0,0.25));
+}
+
+.orange-btn {
+  background: $orange;
+  border-color: $orange;
+  color: white;
+}
+.orange-btn:hover {
+  border-color: $orange;
+  background: $white;
+  color: $orange;
+}
+.orange-border {
+  border-color: $orange;
+  color: $orange;
+}
+
+.btn-animate:after {
+	width: 0%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: $light-orange;
+}
+
+.btn-animate:hover,
+.btn-animate:active,
+.btn-animate:focus {
+	color: white;
+}
+
+.btn-animate:hover:after,
+.btn-animate:active:after,
+.btn-animate:focus:after {
+	width: 100%;
+}
+.btn-animate {
+  border: 1px solid $light-orange;
+  color: inherit;
+  background: none;
+  cursor: pointer;
+  padding: 15px 15px;
+  display: inline-block;
+  margin: 15px 5px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  outline: none;
+  position: relative;
+  @include transition(all 0.3s);
+  z-index: 0;
+}
+.btn-animate:after {
+	content: '';
+	position: absolute;
+	z-index: -1;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+.active {
+  color: white;
+}
+.active:after {
+  width: 100%;
+}
+.red-btn {
+  // border-color: #8B181B;
+}
+.red-btn:after {
+  background: #8B181B;
+}
+.green-btn:after {
+  background: $green;
+}
+
+.orange-border:hover {
+  background-color: $orange;
+  color: $white;
+}
+
+body {
+    font-family: $base-font;
+}
+
+.wrap {
+  margin-left: -15px;
+  margin-right: -15px;
+
+  .header-11 {
+    border-bottom: 1px solid #b3b7b8;
+    height: 67px !important;
+  }
+}
+.app-content {
+  border-bottom: 1px solid #ECEDF0;
+  min-height: 300px;
+}
+.bg-white {
+  background-color: $white;
+}
+.bg_gray {
+  background-color: #F7F7F7;
+}
+.bg-orange {
+  background-color: $orange !important;
+}
+.green {
+  color: $green;
+}
+.red {
+  color: $red;
+}
+.orange {
+  color: $orange ;
+}
+.purple {
+  color: $purple;
+}
+.blue {
+  color: $blue;
+}
+.yellow {
+  color: $yellow;
+}
+.orange {
+  color: $orange;
+}
+.sub-navbar {
+  background-color: #f7f7f7;
+  padding-left: 4vw;
+  border-bottom: 1px solid #ECEDF0;
+
+  h3 {
+    color: $darkblue;
+    font-family: $base-font;
+    font-weight: 300;
+  }
+
+  @include breakpoint(nano) {
+    h3 {
+      font-size: 28px;
+      margin-top: 10px;
+    }
+
+    .company-image {
+      min-width: 180px;
+    }
+  }
+  @include breakpoint(tablet) {
+    h3 {
+      font-size: 32px;
+      margin-top: 20px;
+    }
+  }
+  a:hover, a:focus {
+    text-decoration: none;
+    color: currentColor;
+    padding: 20px 0;
+    border-bottom: solid 3px #f66248;
+  }
+}
+
+.app-body {
+  color: $darkblue;
+  margin-bottom: 25px;
+  padding: 2.35% 4.7%;
+
+  .header-font {
+    font-family: 'Montserrat';
+  }
+}
+
+//sub-navbar
+.options {
+  color: #2c3e50;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Open sans;
+  font-size: 18px !important;
+  font-weight: 400;
+  margin-right: 20px;
+  margin-top: 0;
+
+  @media (max-width: 480px) {
+    font-size: 14.5px !important;
+  }
+
+  @media (max-width: 767px) and (min-width: 480px) {
+    font-size: 16px !important;
+  }
+
+}
+.center {
+  text-align: center;
+}
+
+.activenav {
+  border-bottom: solid 3px $orange;
+  padding: 20px 0;
+}
+.uppercase {
+  text-transform: uppercase;
+}
+.no-margin {
+  margin: 0;
+}
+.no-padding {
+  padding: 0;
+}
+
+.row-space-0 {
+  margin-bottom: 0;
+}
+
+.row-space-top-0 {
+  margin-top: 0;
+}
+
+.row-space-1 {
+  margin-bottom:6.25px;
+}
+
+.row-space-top-1 {
+  margin-top: 6.25px;
+}
+
+.row-space-2 {
+  margin-bottom: 12.5px;
+}
+
+.row-space-top-2 {
+  margin-top: 12.5px;
+}
+
+.row-space-3 {
+  margin-bottom: 18.75px;
+}
+
+.row-space-top-3 {
+  margin-top: 18.75px;
+}
+
+.row-space-4 {
+  margin-bottom: 25px;
+}
+
+.row-space-top-4 {
+  margin-top: 25px;
+}
+
+.row-space-5 {
+  margin-bottom: 31.25px;
+}
+
+.row-space-top-5 {
+  margin-top: 31.25px;
+}
+
+.row-space-6 {
+  margin-bottom: 37.5px;
+}
+
+.row-space-top-6 {
+  margin-top: 37.5px;
+}
+
+.row-space-7 {
+  margin-bottom: 43.75px;
+}
+
+.row-space-top-7 {
+  margin-top: 43.75px;
+}
+
+.row-space-8 {
+  margin-bottom:50px;
+}
+
+.row-space-top-8 {
+  margin-top:50px;
+}
+
+.add-margin-right {
+  margin-right: 10px;
+}
+.right {
+  text-align: right;
+}
+
+.gray {
+  background: $gray
+}
+
+.load {
+  text-align: center;
+  padding: 50px 0;
+}
+
+.no-padding-right {
+  padding-right: 0;
+}
+
+// Animate
+
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes shake {
+  0%, 100% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  10%, 30%, 50%, 70%, 90% {
+    -webkit-transform: translate3d(-10px, 0, 0);
+    transform: translate3d(-10px, 0, 0);
+  }
+
+  20%, 40%, 60%, 80% {
+    -webkit-transform: translate3d(10px, 0, 0);
+    transform: translate3d(10px, 0, 0);
+  }
+}
+
+@keyframes shake {
+  0%, 100% {
+    -webkit-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  10%, 30%, 50%, 70%, 90% {
+    -webkit-transform: translate3d(-10px, 0, 0);
+    -ms-transform: translate3d(-10px, 0, 0);
+    transform: translate3d(-10px, 0, 0);
+  }
+
+  20%, 40%, 60%, 80% {
+    -webkit-transform: translate3d(10px, 0, 0);
+    -ms-transform: translate3d(10px, 0, 0);
+    transform: translate3d(10px, 0, 0);
+  }
+}
+
+.shake {
+  -webkit-animation-name: shake;
+  animation-name: shake;
+}

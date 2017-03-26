@@ -1,0 +1,50 @@
+.wrap
+  .sub-navbar
+    span.options ng-class="{activenav: tab=='customer.ceelin'}" ui-sref="customer.ceelin" ng-click="$event.stopPropagation()"
+      | Competitor Analytics
+    .pull-right.baseline
+      select.form-control ng-init="page=pages[0]" ng-change="competitor_analysis(page)" ng-model="page" ng-options="page.name for page in pages"
+  .app-content
+    div ng-show="loading"
+      .load-overlay
+      .load
+        =image_tag "loading.gif"
+    .padding-graph
+      .row
+        .col-md-6
+          div.row-space-top-6 nvd3="" options="options_chicken" data="data_chicken_jollibee"
+        .col-md-6
+          div.row-space-top-6 nvd3="" options="options_chicken" data="data_chicken_mcdo" api="cc.api"
+      .row.row-space-7
+        .col-md-6
+          h4.header-font.row-space-4 
+            | Ceelin Campaigns ({{posts.posts.length - 1}})
+          .border
+            .row.post ng-click="analyze(post)" ng-if='post.picture' ng-repeat="post in posts.posts track by $index"
+              .col-md-2
+                | {{post.time_formatted}}
+              .col-md-2.no-padding
+                img.post-img ng-src= "{{post.picture}}"
+              .col-md-6.description.height-60
+                a#posts href="{{post.url}}" target="_blank"
+                  | {{post.post}}
+              .col-md-2.engagement
+                .num
+                  | {{post.total}}
+                span.engage Engagements
+        .col-md-6
+          h4.header-font.row-space-4
+            | {{page.title}} ({{posts_mcdo.posts.length - 1}})
+          .border
+            .row.post ng-click="analyze(post)" ng-if='post.picture' ng-repeat="post in posts_mcdo.posts track by $index"
+              .col-md-2
+                | {{post.time_formatted}}
+              .col-md-2.no-padding
+                img.post-img ng-src= "{{post.picture}}"
+              .col-md-6.description.height-60
+                a#posts href="{{post.url}}" target="_blank"
+                  | {{post.post}}
+              .col-md-2.engagement
+                .num
+                  | {{post.total}}
+                span.engage Engagements

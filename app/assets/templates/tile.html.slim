@@ -1,0 +1,26 @@
+.tile-container.comments
+  .row
+    .col-md-2
+      img ng-src= "{{comment.image_url}}"
+    .col-md-10.no-padding
+      p.customer-name
+        | {{comment.from}} {{comment.created_time |date: 'MMMM d, h:mm a'}}
+      p.comment
+        | {{comment.message}}
+  .row ng-repeat="reply in comment.comments" ng-class-odd="'bg_gray'"
+    .col-md-2
+      = image_tag "motolite.png", :class => "avatar"
+    .col-md-10.no-padding
+      p.customer-name
+        | {{reply.from}} | {{reply.created_time |date: 'MMMM d, h:mm a'}}
+      p.comment
+        | {{reply.message}}
+  .row
+    .col-md-2
+      = image_tag "motolite.png", :class => "avatar"
+    .col-md-8.no-padding
+      textarea.form-control.width ng-model="reply_text" placeholder="Write a reply..." ng-enter="reply()"
+    .col-md-2
+      button.outline-button.orange-border ng-click="reply()"
+        i.fa.fa-facebook-official
+        | Reply

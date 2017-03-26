@@ -1,0 +1,103 @@
+.app-content
+  .app-body
+  	h4.header-font USER INFORMATION SETTINGS
+    .row ng-class-odd="'alt'" ng-repeat-start=("row in Name") 
+      .col-xs-1 
+      .col-xs-3
+        h5
+         | {{row.title}} 
+      .col-xs-4
+       | {{row.fname}}
+         {{row.mname}}
+         {{row.lname}}
+      .col-xs-3.text-right
+        a.btn.btn-link.btn-sm href="" ng-click="showEditRow(row)" 
+          span Edit
+    .row ng-class-odd="'alt'" ng-repeat-end="" ng-show="active==row" 
+      .col-xs-1
+      .col-xs-3
+      .col-xs-4
+        input.form-control.input-sm value="{{row.fname}}"
+        br/
+        input.form-control.input-sm value="{{row.mname}}"
+        br/
+        input.form-control.input-sm value="{{row.lname}}"
+        br/
+        button.btn.btn-sm.btn-warning ng-click="showEditRow(row)" Update
+        | &nbsp;&nbsp;
+        button.btn.btn-sm.btn-default ng-click="showEditRow(row)" Cancel
+      .col-xs-3.text-right
+
+
+    .row ng-class-odd="'alt'" ng-repeat-start=("row in myData") 
+      .col-xs-1 
+      .col-xs-3
+        h5
+         | {{row.title}} 
+      .col-xs-4
+       | {{row.fname}}
+      .col-xs-3.text-right
+        a.btn.btn-link.btn-sm href="" ng-click="showEditRow(row)" 
+          span Edit
+    .row ng-class-odd="'alt'" ng-repeat-end="" ng-show="active==row" 
+      .col-xs-1
+      .col-xs-3
+      .col-xs-4
+        input.form-control.input-sm value="{{row.fname}}"
+        br/
+        button.btn.btn-sm.btn-warning ng-click="showEditRow(row)" Update
+        | &nbsp;&nbsp;
+        button.btn.btn-sm.btn-default ng-click="showEditRow(row)" Cancel
+      .col-xs-3.text-right
+
+
+    .row ng-class-odd="'alt'" ng-repeat-start=("row in uploadFile") 
+      .col-xs-1 
+      .col-xs-3
+        h5
+         | {{row.title}} 
+      .col-xs-4
+       | {{row.fname}}
+
+      .col-xs-3.text-right
+        a.btn.btn-link.btn-sm href="" ng-click="showEditRow(row)" 
+          span Edit
+    .row ng-class-odd="'alt'" ng-repeat-end="" ng-show="active==row" 
+      .col-xs-1
+      .col-xs-3
+      .col-xs-4
+       .row
+        .col-lg-9
+         input.btn.btn-sm.btn-default type="file"      
+       br/
+       .row
+        .col-lg-9
+         button.btn.btn-sm.btn-warning ng-click="showEditRow(row)" Update
+         | &nbsp;&nbsp;
+         button.btn.btn-sm.btn-default ng-click="showEditRow(row)" Cancel
+      .col-xs-3.text-right      
+
+
+    br/
+    h4.header-font ACCOUNT INFORMATION 
+    .row.col-lg-10.col-lg-offset-1
+     .row
+      .col-lg-6 ng-repeat=("row in myData2")
+       v-accordion.vAccordion--default multiple=""
+        v-pane expanded=""
+         v-pane-header
+          | {{row.title}}
+         v-pane-content
+          ul
+           li
+            | {{row.content}}
+           li 
+            | {{row.content2}}
+           li 
+            | {{row.content3}}
+           li 
+            | {{row.content4}}
+           li 
+            | {{row.content5}}
+           li 
+            | {{row.content6}}

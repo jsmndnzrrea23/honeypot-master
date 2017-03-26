@@ -1,0 +1,222 @@
+.inline-block {
+  display: inline-block;
+}
+.calendar {
+  display: inline-block;
+  margin: 0;
+  font-family: $header-font;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.card-size {
+  width: 50%
+}
+
+
+.graph-padding {
+  padding: 32px 0 19px 0;
+}
+
+.no-margin-right {
+  margin-right: 0;
+}
+
+.rect {
+  i {
+    display: inline;
+    position: relative;
+    bottom: 27px;
+    left: 10px;
+  }
+}
+.line-graph {
+  width: 900px;
+}
+.btn-go {
+  background-color: $white;
+  border: 1px solid #F57B40;
+  padding: 7px 25px;
+  text-transform: uppercase;
+  color: #F57B40;
+  font-size: 16px;
+  float: right;
+}
+.btn-go:hover {
+  background-color: $light-orange;
+  color: white;
+}
+
+.border {
+  border: 1px solid #C7C7C7;
+  border-radius: 2px;
+  padding: 0 15px;
+  background-color: $white;
+
+}
+.post {
+  margin: 0;
+  border-bottom: 1px solid #C7C7C7;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+.post-img {
+  width: 100%;
+}
+
+.num {
+  font-family: $header-font;
+  font-size: 20px;
+  line-height: 1.1em;
+}
+.engagement {
+  text-align: right;
+  padding: 0;
+}
+.description {
+  padding: 0 0 0 15px;
+  p {
+    font-size: 12px;
+    overflow: hidden;
+  }
+}
+.engage {
+  font-size: 10px;
+  color: $light-orange;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.gender-icon {
+  font-size: 110px;
+}
+.padding_15{
+  padding: 15px;
+}
+.percent {
+  padding-top: 0.2em;
+  font-size: 83px;
+  color: #696969;
+}
+.week {
+  color: $light-orange;
+  margin-bottom: 18px;
+}
+.side-wrap {
+  padding: 20px 0px;
+}
+.date-picker {
+  // border: 0;
+  // @include box-shadow(none);
+  display: inline-block;
+  padding: 10px 10px 10px 35px;
+  font-family: 'Montserrat';
+  cursor: pointer;
+}
+.location-icon {
+  font-size: 80px;
+}
+.rel-status {
+  margin-top: 1em;
+  font-weight: 300;
+  font-size: 16px;
+}
+.relationship-icon {
+  font-size: 60px;
+}
+.relationship {
+  font-size: 12px;
+}
+.analytics-icon {
+  font-size: 28px;
+  display: block;
+}
+
+//modal
+h4.line {
+  border-bottom: 1px solid #C7C7C7;
+  line-height: 2px;
+  margin:10px 0 20px;
+  font-size: 12px;
+
+  span {
+    background: $white;
+    padding: 0 15px;
+  }
+}
+.modal-container {
+  width: 100%;
+  min-height: 350px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+}
+
+.label-var {
+  border: 1px solid $light-orange;
+  padding: 7px 12px 8px;
+  background: $light-orange;
+  color: white;
+  border-radius: 5px 0 0 5px;
+  letter-spacing: 1px;
+  font-weight: 300;
+}
+// .label-var:hover {
+//   color: $light-orange;
+//   background: $white;
+// }
+.rect {
+  border: 1px solid $light-orange;
+    height: 36px;
+    width: 30%;
+    display: inline-block;
+    border-radius: 0 5px 5px 0;
+}
+.remove-border {
+  border: 0;
+  @include box-shadow(none);
+}
+.modal-content {
+  border-top: 4px solid $light-orange;
+}
+.pages {
+  padding: 48px 12px 51px;
+}
+.chosen-choices {
+  border-radius: 0px 7px 7px 0px !important;
+  border-color: $light-orange !important;
+  min-height: 120px !important;
+  height: 100% !important;
+}
+.chosen-container {
+  width: 60% !important;
+  display: inline-block;
+}
+.btn-padding {
+  padding: 12px 35px;
+}
+.add-margin-right {
+  margin-right: 25px;
+}
+
+.cards.ng-enter {
+  @include transition(.5s ease-in-out);
+  opacity:0;
+}
+.cards.ng-enter.ng-enter-active{
+  opacity:1;
+}
+
+.cards.ng-leave {
+  @include transition(.5s ease-in-out);
+  opacity:1;
+}
+.cards.ng-leave.ng-leave-active{
+  opacity:0;
+}
+
+#cloud-dynamic {
+  width: 100%;
+  height: 400px;
+}

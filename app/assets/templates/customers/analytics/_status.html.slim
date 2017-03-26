@@ -1,0 +1,8 @@
+div ng-if="social.respondents!=0" ng-show="social.values.length"
+  h4.center.customer_analytics_title 
+    | Status Breakdown (Respondents: {{social.respondents}})
+  .row.center.no-margin
+    .col-md-6.side-wrap ng-repeat="status in social.values" ng-class="{bg_gray: $index==1 || $index==2}"
+      img.card-size ng-src= "{{status.icon}}"
+      p.rel-status
+        | {{status.status}}, {{status.value}}%

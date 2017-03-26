@@ -1,0 +1,25 @@
+.app-content
+  .app-body
+    .row
+      .col-md-8
+        h4 Page Analytics
+      .col-md-4
+        button.outline-button.orange-border.pull-right ng-click="interestModal()" Select Interest
+    div ng-show="loading.comparative_line"
+      .load-overlay
+      .load
+        =image_tag "loading.gif"
+    div.row-spacing ng-if="show_graph.comparative_line" nvd3="" options='options_comparative' data='data_comparative' api="rc.api"
+.app-content.bg-gray.no-border
+  .app-body
+    .align-right
+      button.outline-button.orange-border ng-click="openModal()" Add Graph
+      
+    div ng-show="loading.cards"
+      .load-overlay
+      .load
+        =image_tag "loading.gif"
+    .row.card-margin ng-if="show_graph.cards"
+      div masonry="" load-images="false"
+        .masonry-brick ng-repeat="card in cards"
+          .card ng-include="" src="card.templateUrl"

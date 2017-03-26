@@ -1,0 +1,7 @@
+.sub-navbar
+  span.options ng-repeat="option in navbarOptions" ui-sref-active="activenav" ui-sref=".{{option.link}}" ng-click="$event.stopPropagation()"
+    | {{option.label}}
+  .company-logo
+    = image_tag "motolite.png" 
+
+div ui-view="subcontent"

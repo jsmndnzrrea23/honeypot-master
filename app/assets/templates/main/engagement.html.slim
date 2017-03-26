@@ -1,0 +1,38 @@
+.app-content
+  div ng-show="loading.engage"
+    .load-overlay
+    .load
+      =image_tag "loading.gif"
+  .app-body ng-show="show_graph.engage"
+    h4.inline.header-font Overall Progress
+    .pull-right
+      button.outline-button.orange-border.add-margin-right ng-click="days(7)" Last 7 Days
+      button.outline-button.orange-border ng-click="days(14)" Last 14 Days
+        
+    div.row-space-top-6 nvd3="" options="options_engagement" data="data_engagement" api="rc.api"
+.app-content.bg_gray
+  div ng-show="loading.comments"
+    .load-overlay
+    .load
+      =image_tag "loading.gif"
+  .app-body ng-show="show_graph.comments"
+    h4.row-space-4
+      | {{filteredComments.length}} out of {{totalComments}} comments
+    .checkbox-btn
+      .inline ng-repeat="interest in interests"  ng-class="{'positive': $index==0, 'neutral': $index==1, 'negative': $index==2, 'resolved': $index==3}"
+        label.checkbox-outline  ng-class="{'active': interest.value}" 
+          input.removeCheckbox ng-model="interest.value" type="checkbox" ng-click='doIfChecked(interest)'
+            | {{interest.label}}
+    div
+      .tile.comments ng-repeat="comment in filteredComments" ng-class="{'border-red': comment.tag=='bad', 'border-orange': comment.tag=='neutral', 'border-green': comment.tag=='good'}"
+        .row.no-margin ng-click="openTile(comment)"
+          .col-md-3
+            img ng-src= "{{comment.image_url}}"
+          .col-md-9.no-padding
+            p.customer-name
+              | {{comment.from}} {{comment.created_time |date: 'MMMM d, h:mm a'}}
+            p.comment.multi-ellipsis
+              | {{comment.message}}
+    .align-center
+      div uib-pagination="" total-items="totalComments" items-per-page="commentsPerPage" ng-model="currentPage" ng-change="pageChanged()"
+      

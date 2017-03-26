@@ -1,0 +1,9 @@
+div ng-if="gender.respondents!=0" ng-show="gender.values.length"
+  h4.center.customer_analytics_title 
+    | Gender Breakdown (Respondents: {{gender.respondents}})
+  .row.center.padding_15.no-margin ng-repeat="gender in gender.values" ng-class="{bg_gray: $index==1}"
+    .col-md-6
+      .line-icon.gender-icon ng-class="{red: gender.gender=='Female', orange: gender.gender=='Male'}" ng-bind-html="gender.icon|html"
+    .col-md-6
+      p.gender_values
+        | {{gender.value}}%

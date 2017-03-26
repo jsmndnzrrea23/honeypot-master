@@ -1,0 +1,398 @@
+Honeypot.config(["$stateProvider", "$httpProvider", "$urlRouterProvider", "$locationProvider", function($stateProvider, $httpProvider, $urlRouterProvider, $locationProvider) {
+  $stateProvider
+    .state('index', {
+      url: '/',
+      templateUrl: 'main/home.html',
+    })
+    .state('login', {
+      url: '/login',
+      templateUrl: 'users/login.html',
+      controller: 'SignupController'
+    })
+    .state('customer', {
+      abstract: true,
+      templateUrl: 'shared/customer.html',
+      controller: 'CustomerController'
+    })
+    .state('customer.jollibee', {
+      url: '/customer/jollibee',
+      views: {
+        'content': {
+          templateUrl: 'customers/jollibee.html',
+          controller: 'JollibeeController'
+        }
+      }
+    })
+
+    .state('customer.comparative', {
+      url: '/customer/comparative',
+      views: {
+        'content': {
+          templateUrl: 'customers/jollibee_comparative.html',
+          controller: 'JollibeeComparativeController'
+        }
+      }
+    })
+
+    .state('customer.loyalty', {
+      url: '/customer/loyalty',
+      views: {
+        'content': {
+          templateUrl: 'customers/loyalty.html',
+          controller: 'LoyaltyController'
+        }
+      }
+    })
+
+    .state('customer.cloudfone', {
+      url: '/customer/cloudfone',
+      views: {
+        'content': {
+          templateUrl: 'customers/cloudfone.html',
+          controller: 'CloudfoneController'
+        }
+      }
+    })
+
+    .state('customer.test', {
+      url: '/customer/test',
+      views: {
+        'content': {
+          templateUrl: 'customers/test.html',
+          controller: 'TestController'
+        }
+      }
+    })
+
+    .state('customer.cloudfonev2', {
+      url: '/customer/cloudfonev2_true',
+      views: {
+        'content': {
+          templateUrl: 'customers/cloudfone_v2.html',
+        }
+      }
+    })
+
+    .state('customer.jollibee_v2', {
+      url: '/customer/jollibeev2',
+      views: {
+        'content': {
+          templateUrl: 'customers/jollibee_v2.html',
+        }
+      }
+    })
+
+    .state('customer.vivo', {
+      url: '/customer/vivo',
+      views: {
+        'content': {
+          templateUrl: 'customers/vivo.html',
+        }
+      }
+    })
+
+    .state('customer.goldilocks', {
+      url: '/customer/goldilocks',
+      views: {
+        'content': {
+          templateUrl: 'customers/goldilocks.html',
+        }
+      }
+    })
+
+    .state('customer.bos', {
+      url: '/customer/bos',
+      views: {
+        'content': {
+          templateUrl: 'customers/seattles.html',
+        }
+      }
+    })
+
+    .state('customer.myanmar', {
+      url: '/customer/myanmar',
+      views: {
+        'content': {
+          templateUrl: 'customers/myanmar.html',
+        }
+      }
+    })
+
+    .state('customer.indonesia', {
+      url: '/customer/indonesia',
+      views: {
+        'content': {
+          templateUrl: 'customers/indonesia.html',
+        }
+      }
+    })
+
+    .state('customer.air21', {
+      url: '/customer/air21',
+      views: {
+        'content': {
+          templateUrl: 'customers/lbc.html',
+        }
+      }
+    })
+
+    .state('customer.ceelin', {
+      url: '/customer/ceelin',
+      views: {
+        'content': {
+          templateUrl: 'customers/ceelin.html',
+        }
+      }
+    })
+
+    .state('customer.blue', {
+      url: '/customer/blue',
+      views: {
+        'content': {
+          templateUrl: 'customers/blue.html',
+        }
+      }
+    })
+
+    .state('customer.555', {
+      url: '/customer/555',
+      views: {
+        'content': {
+          templateUrl: 'customers/555.html',
+        }
+      }
+    })
+
+    .state('customer.anlene', {
+      url: '/customer/anlene',
+      views: {
+        'content': {
+          templateUrl: 'customers/anlene.html',
+        }
+      }
+    })
+    .state('customer.anmum', {
+      url: '/customer/anmum',
+      views: {
+        'content': {
+          templateUrl: 'customers/anmum.html',
+        }
+      }
+    })
+
+    .state('customer.cemex', {
+      url: '/customer/cemex',
+      views: {
+        'content': {
+          templateUrl: 'customers/cemex.html',
+        }
+      }
+    })
+
+    .state('customer.smart', {
+      url: '/customer/smart',
+      views: {
+        'content': {
+          templateUrl: 'customers/smart.html',
+        }
+      }
+    })
+    .state('customer.zed', {
+      url: '/customer/zed',
+      views: {
+        'content': {
+          templateUrl: 'customers/zed.html',
+        }
+      }
+    })
+    .state('customer.unionbank', {
+      url: '/customer/unionbank',
+      views: {
+        'content': {
+          templateUrl: 'customers/unionbank.html',
+        }
+      }
+    })
+    .state('customer.hanford', {
+      url: '/customer/hanford',
+      views: {
+        'content': {
+          templateUrl: 'customers/hanford.html',
+        }
+      }
+    })
+    .state('customer.motolite', {
+      url: '/customer/motolite',
+      views: {
+        'content': {
+          templateUrl: 'customers/motolite.html',
+        }
+      }
+    })
+
+    .state('customer.spotify', {
+      url: '/customer/spotify',
+      views: {
+        'content': {
+          templateUrl: 'customers/spotify.html',
+        }
+      }
+    })
+    .state('customer.skinstation', {
+      url: '/customer/skinstation',
+      views: {
+        'content': {
+          templateUrl: 'customers/skinstation.html',
+        }
+      }
+    })
+
+    .state('customer.games', {
+      url: '/customer/games',
+      views: {
+        'content': {
+          templateUrl: 'customers/games.html',
+        }
+      }
+    })
+    .state('customer.viu', {
+      url: '/customer/viu',
+      views: {
+        'content': {
+          templateUrl: 'customers/viu.html',
+        }
+      }
+    })
+    .state('customer.fuse', {
+      url: '/customer/fuse',
+      views: {
+        'content': {
+          templateUrl: 'customers/fuse.html',
+        }
+      }
+    })
+
+    .state('customer.skinwhite', {
+      url: '/customer/skinwhite',
+      views: {
+        'content': {
+          templateUrl: 'customers/skinwhite.html',
+        }
+      }
+    })
+
+    .state('customer.mercury', {
+      url: '/customer/mercury',
+      views: {
+        'content': {
+          templateUrl: 'customers/mercury.html',
+        }
+      }
+    })
+    .state('customer.truemoney', {
+      url: '/customer/truemoney',
+      views: {
+        'content': {
+          templateUrl: 'customers/truemoney.html',
+        }
+      }
+    })
+
+    .state('customer.angara', {
+      url: '/customer/angara',
+      views: {
+        'content': {
+          templateUrl: 'customers/angara.html',
+        }
+      }
+    })
+
+    .state('customer.sbc', {
+      url: '/customer/sbc',
+      views: {
+        'content': {
+          templateUrl: 'customers/sbc.html',
+        }
+      }
+    })
+    .state('customer.sm', {
+      url: '/customer/sm',
+      views: {
+        'content': {
+          templateUrl: 'customers/sm.html',
+        }
+      }
+    })
+    .state('customer.bumgarner', {
+      url: '/customer/bumgarner',
+      views: {
+        'content': {
+          templateUrl: 'customers/bumgarner.html',
+        }
+      }
+    })
+
+    .state('main', {
+      abstract: true,
+      templateUrl: 'shared/sidebar.html',
+      controller: 'SidebarController'
+    })
+    .state('main.subnavbar', {
+      abstract: true,
+      views: {
+        'content@main': {
+          templateUrl: 'shared/subnavbar.html',
+          controller: 'SubNavbarController'
+        }
+      }
+    })
+    .state('main.subnavbar.analytics', {
+      url: '/analytics/basic',
+      views: {
+        'subcontent': {
+          templateUrl: 'main/analytics.html',
+          controller: 'AnalyticsController'
+        }
+      },
+      data: {chart: "stackedAreaChart"}
+    })
+    .state('main.subnavbar.comparative', {
+      url: '/analytics/comparative',
+      views: {
+        'subcontent': {
+          templateUrl: 'main/comparative.html',
+          controller: 'AnalyticsController'
+        }
+      },
+      data: {chart: "lineChart"}
+    })
+    .state('main.subnavbar.engagement', {
+      url: '/engagement',
+      views: {
+        'subcontent': {
+          templateUrl: 'main/engagement.html',
+          controller: 'EngagementController'
+        }
+      }
+    })
+
+    .state('main.subnavbar.settings', {
+      url: '/settings',
+      views: {
+        'subcontent': {
+          templateUrl: 'main/settings.html',
+          controller: 'SettingsController'
+        }
+      }
+    })
+
+
+    $urlRouterProvider.otherwise('/');
+    $locationProvider.html5Mode({
+  enabled: true,
+  requireBase: false
+});
+
+  }]).run(["$rootScope", "$state", function($rootScope, $state) {
+      $rootScope.$state = $state;
+    }]);

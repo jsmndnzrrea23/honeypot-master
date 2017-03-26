@@ -1,0 +1,27 @@
+.wrap
+  .sub-navbar
+    span.options ng-repeat="navbar in navbarOptions" ng-class="{activenav: tab==navbar.link}" ui-sref="{{navbar.link}}" 
+      | {{navbar.label}}
+    .pull-right.baseline
+      select.form-control ng-init="page=pages_comparative[0]" ng-change="competitor_comparative(page)" ng-model="page" ng-options="page.name for page in pages_comparative"
+  .app-content
+    h4.dates 
+      | For the month of 
+      strong
+        | {{period.month}}
+    h4.dates
+      | Total Unique Engaged Users:
+      strong
+        | {{data_comparative_jollibee[0].page_total}}
+    div ng-show="loading_comparative"
+      .load-overlay
+      .load
+        =image_tag "loading.gif"
+    .padding-graph
+      div.row-space-top-6 nvd3="" options="options_comparative_jollibee" data="data_comparative_jollibee"
+          
+
+        
+                  
+                
+      
